@@ -110,6 +110,11 @@ public class TowerManager : MonoBehaviour
     IEnumerator FireProjectile(Quaternion direction)
     {
         GameObject shotProjectile = Instantiate(projectile, this.transform);
+
+        //day 1 added -------------------------------------------------------------------------------
+        shotProjectile.GetComponent<ProjectileManager>().self = self.projectile;
+        shotProjectile.GetComponent<ProjectileManager>().target = currentTarget;
+
         readyToFire = false;
         yield return new WaitForSeconds(self.attackRate);
         readyToFire = true;
